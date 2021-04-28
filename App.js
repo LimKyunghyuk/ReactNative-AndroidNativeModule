@@ -14,7 +14,7 @@ class App extends Component{
   render(){
     return (
       <View>
-        <Text>Hello world!</Text>
+        <Text>앱 업데이트!!</Text>
         <NewModuleButton/>
       </View>
     )

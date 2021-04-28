@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -32,9 +33,14 @@ public class CalendarModule  extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void createCalendarEvent(String name, String location) {
+    public void createCalendarEvent(String name, String location, Callback callBack) {
+
         Log.d("CalendarModule", "Create event called with name: " + name
                 + " and location: " + location);
+
+        Integer eventId = 1;
+        callBack.invoke(eventId);
+
         Toast.makeText(getReactApplicationContext(), name, Toast.LENGTH_SHORT).show();
 
 
@@ -53,6 +59,12 @@ public class CalendarModule  extends ReactContextBaseJavaModule {
 
             @Override
             public void onPostExecute(File apk) {
+
+
+                Integer eventId = 3;
+//                mySuccessCallback.invoke(null, eventId);
+
+
                 Toast.makeText(getReactApplicationContext(), "onPostExecute", Toast.LENGTH_SHORT).show();
 
                 try{
